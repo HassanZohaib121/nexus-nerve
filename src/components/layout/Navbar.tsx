@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { navItems, socialLinks, studioInfo } from "@/data/navigation";
 import { animate, stagger } from "animejs";
@@ -81,10 +82,17 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className="group flex items-center gap-2 text-current text-sm md:text-base font-black tracking-widest uppercase font-mono"
+            className="group flex items-center gap-2.5 text-current text-sm md:text-base font-black tracking-widest uppercase font-mono"
             data-cursor="HOME"
           >
-            <span className="h-2 w-2 rounded-full bg-[#57cccc] group-hover:scale-150 transition-transform duration-300" />
+            <Image
+              src="/logo.jpeg"
+              alt="Nexus Nerve logo"
+              width={34}
+              height={34}
+              className="rounded-full object-cover group-hover:scale-110 transition-transform duration-300 shadow-sm"
+              priority
+            />
             <span>NEXUS NERVE</span>
             <span className="hidden sm:inline-block text-[10px] text-current/50 font-normal tracking-wider ml-1">
               [STUDIO]
@@ -154,9 +162,18 @@ export default function Navbar() {
           className="fixed inset-0 z-40 bg-[#f4f2ed] dark:bg-[#0e0e10] flex flex-col justify-between px-6 py-28 md:hidden overflow-y-auto"
         >
           <div className="flex flex-col gap-6">
-            <span className="metadata-tag text-[#57cccc] font-bold">
-              // INDEX NAVIGATION
-            </span>
+            <div className="flex items-center gap-3 mb-2">
+              <Image
+                src="/logo.jpeg"
+                alt="Nexus Nerve logo"
+                width={40}
+                height={40}
+                className="rounded-full object-cover"
+              />
+              <span className="metadata-tag text-[#57cccc] font-bold">
+                // INDEX NAVIGATION
+              </span>
+            </div>
             <nav className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <Link

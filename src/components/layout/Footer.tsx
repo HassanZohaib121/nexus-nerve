@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { socialLinks, studioInfo, navItems } from "@/data/navigation";
 import Magnetic from "@/components/animations/Magnetic";
 import { ArrowUp } from "lucide-react";
@@ -39,8 +40,14 @@ export default function Footer() {
         {/* Brand statement */}
         <div className="md:col-span-5 flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <span className="h-2 w-2 rounded-full bg-[#57cccc]" />
+            <div className="flex items-center gap-3 mb-4">
+              <Image
+                src="/logo.jpeg"
+                alt="Nexus Nerve logo"
+                width={40}
+                height={40}
+                className="rounded-full object-cover"
+              />
               <span className="text-xl md:text-2xl font-black uppercase tracking-tight">
                 {studioInfo.name}
               </span>

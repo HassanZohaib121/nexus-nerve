@@ -38,12 +38,29 @@ export const metadata: Metadata = {
     "typography",
   ],
   authors: [{ name: "Nexus Nerve" }],
+  icons: {
+    icon: [
+      { url: "/logo.jpeg", type: "image/jpeg" },
+    ],
+    apple: [
+      { url: "/logo.jpeg", type: "image/jpeg" },
+    ],
+    shortcut: "/logo.jpeg",
+  },
   openGraph: {
     title: "NEXUS NERVE — Independent Creative Studio",
     description:
       "We create brands, digital experiences, and visual identities that move people.",
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "/logo.jpeg",
+        width: 500,
+        height: 500,
+        alt: "Nexus Nerve Studio",
+      },
+    ],
   },
 };
 
