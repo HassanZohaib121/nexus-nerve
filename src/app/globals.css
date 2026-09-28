@@ -1,26 +1,106 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #f4f2ed;
+    --foreground: #111111;
+    --muted: #6e7373;
+    --muted-light: #949a9a;
+    --border: #d5d9d9;
+    --border-light: rgba(17, 17, 17, 0.08);
+    --card: #ebeeed;
+    --accent: #57cccc;
+    --accent-hover: #3ebbbb;
+    --accent-light: rgba(87, 204, 204, 0.14);
+    --surface: #ffffff;
+  }
+
+  .dark {
+    --background: #0c1011;
+    --foreground: #f2f7f7;
+    --muted: #7b8b8d;
+    --muted-light: #455254;
+    --border: #1d2527;
+    --border-light: rgba(255, 255, 255, 0.08);
+    --card: #121819;
+    --accent: #57cccc;
+    --accent-hover: #72e2e2;
+    --accent-light: rgba(87, 204, 204, 0.18);
+    --surface: #172022;
+  }
+
+  * {
+    border-color: var(--border);
+    box-sizing: border-box;
+  }
+
+  html {
+    background-color: var(--background);
+    color: var(--foreground);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    overflow-x: hidden;
+    position: relative;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--foreground);
+    color: var(--background);
+  }
+
+  /* Custom typography clamp classes */
+  .display-hero {
+    font-size: clamp(3.75rem, 11vw, 11.5rem);
+    line-height: 0.82;
+    letter-spacing: -0.055em;
+  }
+
+  .display-section {
+    font-size: clamp(2.5rem, 7vw, 7rem);
+    line-height: 0.88;
+    letter-spacing: -0.045em;
+  }
+
+  .display-sub {
+    font-size: clamp(1.75rem, 4vw, 3.75rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+
+  .metadata-tag {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.6875rem;
+    line-height: 1;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
