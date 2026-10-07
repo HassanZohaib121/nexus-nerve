@@ -25,7 +25,7 @@ export default function WorkPage() {
     activeCategory === "ALL"
       ? projects
       : projects.filter((p) =>
-          p.category.toUpperCase().includes(activeCategory.toUpperCase())
+          p.category.toUpperCase().includes(activeCategory.toUpperCase()),
         );
 
   return (
@@ -110,7 +110,7 @@ export default function WorkPage() {
             <Link
               key={project.id}
               href={`/work/${project.slug}`}
-              className="group py-6 md:py-8 flex flex-col md:flex-row md:items-center justify-between gap-4 transition-colors hover:bg-current/[0.02] px-4"
+              className="group py-6 md:py-8 flex flex-col md:flex-row md:items-center justify-between gap-4 transition-colors hover:bg-current/2 px-4"
               data-cursor="VIEW"
             >
               <div className="flex items-baseline gap-6">
@@ -125,7 +125,9 @@ export default function WorkPage() {
               <div className="flex flex-wrap items-center gap-6 md:gap-12 text-xs font-mono text-current/60">
                 <span className="hidden sm:inline-block">{project.client}</span>
                 <span className="text-current/40">{project.category}</span>
-                <span className="text-current/80 font-bold">{project.year}</span>
+                <span className="text-current/80 font-bold">
+                  {project.year}
+                </span>
                 <div className="h-8 w-8 rounded-full border border-current/20 flex items-center justify-center group-hover:border-[#57cccc] group-hover:bg-[#57cccc] group-hover:text-[#111111] transition-all">
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </div>

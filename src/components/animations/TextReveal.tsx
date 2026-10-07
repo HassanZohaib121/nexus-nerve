@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { RefObject, useEffect, useRef } from "react";
 import { animate, stagger } from "animejs";
 
 interface TextRevealProps {
@@ -28,7 +28,8 @@ export default function TextReveal({
   useEffect(() => {
     if (!containerRef.current || animatedRef.current) return;
 
-    const lineElements = containerRef.current.querySelectorAll<HTMLElement>(".reveal-text-line");
+    const lineElements =
+      containerRef.current.querySelectorAll<HTMLElement>(".reveal-text-line");
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -46,7 +47,7 @@ export default function TextReveal({
           observer.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.15 },
     );
 
     observer.observe(containerRef.current);
@@ -54,7 +55,10 @@ export default function TextReveal({
   }, [delay, duration, staggerDelay]);
 
   return (
-    <Component ref={containerRef as any} className={`overflow-hidden ${className}`}>
+    <Component
+      ref={containerRef as RefObject<HTMLDivElement | null>}
+      className={`overflow-hidden ${className}`}
+    >
       {lines.map((line, index) => (
         <span key={index} className="block overflow-hidden py-1">
           <span

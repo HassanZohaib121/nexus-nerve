@@ -4,7 +4,7 @@ import Link from "next/link";
 import { projects, getProjectBySlug } from "@/data/projects";
 import ImageReveal from "@/components/animations/ImageReveal";
 import MagneticButton from "@/components/ui/MagneticButton";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 
 export async function generateStaticParams() {
@@ -63,7 +63,7 @@ export default async function ProjectDetailPage({
       <div className="border-b border-current/15 pb-12 mb-12">
         <div className="flex items-center gap-3 mb-6">
           <span className="metadata-tag text-[#57cccc] font-bold">
-            [{project.id} // CASE STUDY]
+            [{project.id} {`// CASE STUDY`}]
           </span>
           <span className="metadata-tag text-current/50">{project.year}</span>
         </div>
@@ -94,7 +94,10 @@ export default async function ProjectDetailPage({
 
       {/* Main Hero Visual */}
       <div className="w-full mb-16 md:mb-24">
-        <ImageReveal className="aspect-[16/9] md:aspect-[21/9] w-full" cursorText="GALLERY">
+        <ImageReveal
+          className="aspect-video md:aspect-21/9 w-full"
+          cursorText="GALLERY"
+        >
           <div className="relative h-full w-full">
             <Image
               src={project.image}
@@ -112,7 +115,7 @@ export default async function ProjectDetailPage({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start pb-20 border-b border-current/15">
         <div className="lg:col-span-4">
           <span className="metadata-tag text-[#57cccc] block mb-4">
-            // OVERVIEW & CONTEXT
+            {`// OVERVIEW & CONTEXT`}
           </span>
           <p className="text-xl md:text-2xl font-light leading-relaxed text-current/90">
             {project.overview}
@@ -160,7 +163,7 @@ export default async function ProjectDetailPage({
         <div className="py-20 md:py-32 border-b border-current/15">
           <div className="flex items-center justify-between mb-12">
             <span className="metadata-tag text-[#57cccc]">
-              // VISUAL DOCUMENTATION
+              {`// VISUAL DOCUMENTATION`}
             </span>
             <span className="metadata-tag text-current/40">
               {project.gallery.length} ARTIFACTS
@@ -174,7 +177,7 @@ export default async function ProjectDetailPage({
                 className={idx % 3 === 0 ? "md:col-span-2" : "md:col-span-1"}
               >
                 <ImageReveal
-                  className={idx % 3 === 0 ? "aspect-[21/9]" : "aspect-[4/3]"}
+                  className={idx % 3 === 0 ? "aspect-21/9" : "aspect-4/3"}
                   cursorText="EXPAND"
                 >
                   <div className="relative h-full w-full">
@@ -212,7 +215,11 @@ export default async function ProjectDetailPage({
             </Link>
           </div>
 
-          <MagneticButton href={`/work/${nextProject.slug}`} size="lg" withArrow>
+          <MagneticButton
+            href={`/work/${nextProject.slug}`}
+            size="lg"
+            withArrow
+          >
             VIEW NEXT PROJECT
           </MagneticButton>
         </div>

@@ -26,7 +26,10 @@ export default function Navbar() {
 
   // Close mobile menu on route change
   useEffect(() => {
-    setMobileMenuOpen(false);
+    function load() {
+      setMobileMenuOpen(false);
+    }
+    load();
   }, [pathname]);
 
   // Animate mobile menu entrance with Anime.js
@@ -36,7 +39,8 @@ export default function Navbar() {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
       const links = mobileMenuRef.current.querySelectorAll(".mobile-nav-item");
-      const metadata = mobileMenuRef.current.querySelectorAll(".mobile-meta-item");
+      const metadata =
+        mobileMenuRef.current.querySelectorAll(".mobile-meta-item");
 
       animate(mobileMenuRef.current, {
         opacity: [0, 1],
@@ -114,7 +118,9 @@ export default function Navbar() {
                   }`}
                   data-cursor="OPEN"
                 >
-                  <span className="mr-1.5 opacity-40 text-[9px]">{item.number}</span>
+                  <span className="mr-1.5 opacity-40 text-[9px]">
+                    {item.number}
+                  </span>
                   <span>{item.label}</span>
                   {isActive && (
                     <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-[#57cccc]" />
@@ -149,7 +155,11 @@ export default function Navbar() {
               <span className="metadata-tag font-bold">
                 {mobileMenuOpen ? "CLOSE" : "MENU"}
               </span>
-              {mobileMenuOpen ? <X className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
+              {mobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <MenuIcon className="h-5 w-5" />
+              )}
             </button>
           </div>
         </div>
@@ -171,7 +181,7 @@ export default function Navbar() {
                 className="rounded-full object-cover"
               />
               <span className="metadata-tag text-[#57cccc] font-bold">
-                // INDEX NAVIGATION
+                {`// INDEX NAVIGATION`}
               </span>
             </div>
             <nav className="flex flex-col gap-4">
@@ -193,7 +203,9 @@ export default function Navbar() {
 
           <div className="mt-12 pt-8 border-t border-current/15 flex flex-col gap-6">
             <div className="mobile-meta-item flex flex-col gap-1">
-              <span className="metadata-tag text-current/40">DIRECT INQUIRIES</span>
+              <span className="metadata-tag text-current/40">
+                DIRECT INQUIRIES
+              </span>
               <a
                 href={`mailto:${studioInfo.email}`}
                 className="text-base font-mono underline decoration-current/30 text-[#57cccc]"

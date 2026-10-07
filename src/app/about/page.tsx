@@ -62,7 +62,7 @@ export default function AboutPage() {
         </div>
 
         <div className="lg:col-span-5">
-          <ImageReveal className="aspect-[4/5] w-full" cursorText="ARCHIVE">
+          <ImageReveal className="aspect-4/5 w-full" cursorText="ARCHIVE">
             <div className="relative h-full w-full">
               <Image
                 src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80"

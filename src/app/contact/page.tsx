@@ -3,8 +3,7 @@
 import { useState, FormEvent } from "react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { studioInfo, socialLinks } from "@/data/navigation";
-import MagneticButton from "@/components/ui/MagneticButton";
-import { Check, Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
+import { Check, Phone, MapPin, ArrowUpRight } from "lucide-react";
 
 const serviceOptions = [
   "Brand Strategy",
@@ -44,7 +43,7 @@ export default function ContactPage() {
 
   const toggleService = (srv: string) => {
     setSelectedServices((prev) =>
-      prev.includes(srv) ? prev.filter((s) => s !== srv) : [...prev, srv]
+      prev.includes(srv) ? prev.filter((s) => s !== srv) : [...prev, srv],
     );
   };
 
@@ -72,7 +71,7 @@ export default function ContactPage() {
         <div className="lg:col-span-5 space-y-12">
           <div>
             <span className="metadata-tag text-[#57cccc] block mb-3">
-              // DIRECT STUDIO CONTACT
+              {`// DIRECT STUDIO CONTACT`}
             </span>
             <a
               href={`mailto:${studioInfo.email}`}
@@ -87,9 +86,11 @@ export default function ContactPage() {
 
           <div className="pt-8 border-t border-current/15 space-y-6 text-sm font-mono">
             <div className="flex items-start gap-3">
-              <MapPin className="h-4 w-4 text-[#57cccc] mt-1 flex-shrink-0" />
+              <MapPin className="h-4 w-4 text-[#57cccc] mt-1 shrink-0" />
               <div>
-                <span className="text-current/50 block text-xs">STUDIO LOCATION</span>
+                <span className="text-current/50 block text-xs">
+                  STUDIO LOCATION
+                </span>
                 <span className="font-semibold">{studioInfo.address}</span>
                 <p className="text-xs text-current/40 mt-0.5">
                   Pakistan / Worldwide Remote
@@ -98,7 +99,7 @@ export default function ContactPage() {
             </div>
 
             <div className="flex items-start gap-3">
-              <Phone className="h-4 w-4 text-[#57cccc] mt-1 flex-shrink-0" />
+              <Phone className="h-4 w-4 text-[#57cccc] mt-1 shrink-0" />
               <div>
                 <span className="text-current/50 block text-xs">TELEPHONE</span>
                 <span className="font-semibold">{studioInfo.phone}</span>
@@ -129,7 +130,7 @@ export default function ContactPage() {
         </div>
 
         {/* Right Column: Project Brief Form */}
-        <div className="lg:col-span-7 bg-current/[0.02] p-6 sm:p-10 rounded-sm border border-current/10">
+        <div className="lg:col-span-7 bg-current/2 p-6 sm:p-10 rounded-sm border border-current/10">
           {submitted ? (
             <div className="py-16 text-center">
               <div className="h-16 w-16 rounded-full bg-[#57cccc] text-[#111111] flex items-center justify-center mx-auto mb-6">
@@ -139,8 +140,8 @@ export default function ContactPage() {
                 INQUIRY RECEIVED
               </h3>
               <p className="text-base text-current/75 max-w-md mx-auto leading-relaxed">
-                Thank you for considering Nexus Nerve. Our partners will review your
-                brief and get in touch within 24 hours.
+                Thank you for considering Nexus Nerve. Our partners will review
+                your brief and get in touch within 24 hours.
               </p>
               <button
                 onClick={() => setSubmitted(false)}
@@ -309,7 +310,9 @@ export default function ContactPage() {
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-3 rounded-full bg-[#111111] dark:bg-white text-white dark:text-black hover:bg-[#57cccc] hover:text-[#111111] dark:hover:bg-[#57cccc] dark:hover:text-[#111111] px-10 py-5 text-sm font-mono uppercase tracking-widest transition-colors duration-300 disabled:opacity-50 cursor-pointer"
                   data-cursor="SUBMIT"
                 >
-                  <span>{isSubmitting ? "TRANSMITTING..." : "SUBMIT BRIEF"}</span>
+                  <span>
+                    {isSubmitting ? "TRANSMITTING..." : "SUBMIT BRIEF"}
+                  </span>
                   <ArrowUpRight className="h-4 w-4" />
                 </button>
               </div>

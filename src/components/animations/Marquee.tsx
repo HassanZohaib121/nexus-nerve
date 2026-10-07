@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { animate } from "animejs";
+import { animate, JSAnimation } from "animejs";
 
 interface MarqueeProps {
   items: string[];
@@ -23,7 +23,7 @@ export default function Marquee({
   separator = "—",
 }: MarqueeProps) {
   const trackRef = useRef<HTMLDivElement>(null);
-  const animRef = useRef<any>(null);
+  const animRef = useRef<JSAnimation | null>(null);
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {

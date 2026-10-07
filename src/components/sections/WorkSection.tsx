@@ -47,9 +47,10 @@ export default function WorkSection() {
       {p4 && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center my-12">
           <div className="lg:col-span-4 order-2 lg:order-1">
-            <span className="metadata-tag text-[#57cccc] block mb-3">// FEATURED DIRECTION</span>
+            <span className="metadata-tag text-[#57cccc] block mb-3">{`// FEATURED DIRECTION`}</span>
             <p className="text-xl md:text-2xl font-serif italic text-current/80 leading-relaxed mb-6">
-              "Tactile austerity meets modern digital conversion. Every frame is treated with the rigor of a printed art catalogue."
+              &quot;Tactile austerity meets modern digital conversion. Every
+              frame is treated with the rigor of a printed art catalogue.&quot;
             </p>
             <div className="h-px w-16 bg-current/20 mb-6" />
             <p className="text-xs font-mono uppercase text-current/50">

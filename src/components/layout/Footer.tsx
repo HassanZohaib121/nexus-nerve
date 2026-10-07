@@ -68,7 +68,7 @@ export default function Footer() {
 
         {/* Navigation links */}
         <div className="md:col-span-3">
-          <span className="metadata-tag text-current/40 block mb-6">// DIRECTORY</span>
+          <span className="metadata-tag text-current/40 block mb-6">{`// DIRECTORY`}</span>
           <ul className="space-y-3">
             {navItems.map((item) => (
               <li key={item.href}>
@@ -86,7 +86,7 @@ export default function Footer() {
 
         {/* Social presence */}
         <div className="md:col-span-3">
-          <span className="metadata-tag text-current/40 block mb-6">// NETWORK</span>
+          <span className="metadata-tag text-current/40 block mb-6">{`// NETWORK`}</span>
           <ul className="space-y-3">
             {socialLinks.map((item) => (
               <li key={item.name}>

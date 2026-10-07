@@ -14,11 +14,18 @@ export default function CustomCursor() {
   useEffect(() => {
     // Check if device is touch
     if (typeof window === "undefined") return;
-    if (window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window) {
-      setIsTouchDevice(true);
-      return;
+    function isTouchDevice() {
+      if (
+        window.matchMedia("(pointer: coarse)").matches ||
+        "ontouchstart" in window
+      ) {
+        setIsTouchDevice(true);
+        return;
+      }
+      setIsTouchDevice(false);
     }
-    setIsTouchDevice(false);
+
+    isTouchDevice();
 
     let mouseX = -100;
     let mouseY = -100;
@@ -48,7 +55,9 @@ export default function CustomCursor() {
       if (!target) return;
 
       const cursorTarget = target.closest<HTMLElement>("[data-cursor]");
-      const linkTarget = target.closest("a, button, [role='button'], input, textarea, select");
+      const linkTarget = target.closest(
+        "a, button, [role='button'], input, textarea, select",
+      );
 
       if (cursorTarget) {
         const text = cursorTarget.getAttribute("data-cursor") || "";
@@ -106,7 +115,7 @@ export default function CustomCursor() {
 
   return (
     <div
-      className={`pointer-events-none fixed inset-0 z-[9999] transition-opacity duration-300 ${
+      className={`pointer-events-none fixed inset-0 z-9999 transition-opacity duration-300 ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
       aria-hidden="true"
@@ -127,8 +136,8 @@ export default function CustomCursor() {
           cursorText
             ? "bg-[#111111] text-[#f4f2ed] dark:bg-[#f4f2ed] dark:text-[#111111] border-transparent"
             : isHovered
-            ? "border-[#57cccc] bg-[#57cccc]/10"
-            : "bg-transparent"
+              ? "border-[#57cccc] bg-[#57cccc]/10"
+              : "bg-transparent"
         }`}
         style={{ willChange: "transform" }}
       >
